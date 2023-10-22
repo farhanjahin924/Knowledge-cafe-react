@@ -3,17 +3,17 @@ import { useState } from "react";
 
 
 const Blogs = () => {
-    const [Blogs, setblogs] = useState([]);
+    const [Blogs, Setblogs] = useState([]);
     useEffect(()=> {
         fetch('blogs.json')
         .then(res => res.json())
-        .then(data => setblogs(data))
+        .then(data => Setblogs(data))
     },[])
     return (
-        <div>
-            hello
+        <div className="text-3xl font-bold md:w-2/3 border">
+          <h4>Blogs :</h4>  
         </div>
     );
 };
 
-export default Blogs;
+export default Blogs;   
