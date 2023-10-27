@@ -1,6 +1,7 @@
-import { BsBookmark } from 'react-icons/bs';
+import { FaBookmark } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-const Blog = ( {blog}) => {
+
+const Blog = ( {blog, handleBookMarks}) => {
     const {title,cover,author_img,reading_time,author,posted_date,hashtags} =blog;
     return (
         <div >
@@ -18,19 +19,21 @@ const Blog = ( {blog}) => {
             </div>
             <div className='flex gap-1 items-center '>
                 <p className='text-xl font-medium'>{reading_time} min read</p>
-                <button><BsBookmark className='text-xl font-medium ml-2'></BsBookmark></button>
+                <button onClick={() =>{handleBookMarks(blog)}} className='text-red-500'><FaBookmark className='text-xl font-medium ml-2 text-red-700'></FaBookmark></button>
             </div>
            </div>
            <h2 className='text-5xl font-blod    '> {title}</h2>
-            <div className=' mb-20 '>
+            <p className=' mb-20 '>
             {
-                hashtags.map(  (hash,index) => <span className='ml-3' key={index}><a href="">#{hash}</a></span>)
+                hashtags.map(  (hash,index) => <span className='ml-3' key={index} ><a href="">#{hash}</a></span>)
             }
-            </div>
+            </p>
         </div>
     );
 };
 Blog.PropTypes = {
-    blog: PropTypes.object.isRequired
+    blog: PropTypes.object,
+    handleBookMarks : PropTypes.func
 }
+// proptypes problem not solved 
 export default Blog;
