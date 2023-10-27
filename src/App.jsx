@@ -13,12 +13,19 @@ function App() {
     setBookmarks(newBookmarks);
 
   };
+  const[markRead,setMarkRead] = useState(0);
+  const handleMarkBtn = (time) => {
+    
+    const newMarked = markRead + time;
+    setMarkRead(newMarked);
+    console.log('btn clicked',time,markRead)
+  }
   return (
     <>
       <Header></Header>
     <div className="md:flex">
-    <Blogs handleBookMarks={handleBookMarks}></Blogs>
-    <Bookmarks bookmarks={bookmarks}></Bookmarks>
+    <Blogs handleBookMarks={handleBookMarks} handleMarkBtn={handleMarkBtn}></Blogs>
+    <Bookmarks bookmarks={bookmarks} markRead={markRead}></Bookmarks>
     
     </div>
     {/* <Blog></Blog> */}
